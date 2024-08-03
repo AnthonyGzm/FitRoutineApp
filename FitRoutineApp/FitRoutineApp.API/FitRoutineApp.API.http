@@ -1,0 +1,6 @@
+@FitRoutineApp.API_HostAddress = http://localhost:5047
+
+GET {{FitRoutineApp.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

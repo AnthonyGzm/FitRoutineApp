@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitRoutineApp.API", "FitRoutineApp.API\FitRoutineApp.API.csproj", "{4E50CE18-3282-4134-8A7F-08B03B004C98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitRoutineApp.Web", "FitRoutineApp.Web\FitRoutineApp.Web.csproj", "{A4DDC48E-C124-4616-8DF1-5C2BB34F6CEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitRoutineApp.Domain", "FitRoutineApp.Domain\FitRoutineApp.Domain.csproj", "{A3363138-D640-4C72-A0FD-74D08EB4EDAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitRoutineApp.Application", "FitRoutineApp.Application\FitRoutineApp.Application.csproj", "{77D18671-0190-4763-98B7-B29F1C173BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitRoutineApp.Infrastructure", "FitRoutineApp.Infrastructure\FitRoutineApp.Infrastructure.csproj", "{16E15A98-F294-4917-9659-DAEBF3EA9C16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitRoutineApp.IOC", "FitRoutineApp.IOC\FitRoutineApp.IOC.csproj", "{D7BA7C81-7D16-48B5-9A15-0F82755FE9FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E50CE18-3282-4134-8A7F-08B03B004C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E50CE18-3282-4134-8A7F-08B03B004C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E50CE18-3282-4134-8A7F-08B03B004C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E50CE18-3282-4134-8A7F-08B03B004C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4DDC48E-C124-4616-8DF1-5C2BB34F6CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4DDC48E-C124-4616-8DF1-5C2BB34F6CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4DDC48E-C124-4616-8DF1-5C2BB34F6CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4DDC48E-C124-4616-8DF1-5C2BB34F6CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3363138-D640-4C72-A0FD-74D08EB4EDAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3363138-D640-4C72-A0FD-74D08EB4EDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3363138-D640-4C72-A0FD-74D08EB4EDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3363138-D640-4C72-A0FD-74D08EB4EDAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D18671-0190-4763-98B7-B29F1C173BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D18671-0190-4763-98B7-B29F1C173BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D18671-0190-4763-98B7-B29F1C173BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D18671-0190-4763-98B7-B29F1C173BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E15A98-F294-4917-9659-DAEBF3EA9C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E15A98-F294-4917-9659-DAEBF3EA9C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E15A98-F294-4917-9659-DAEBF3EA9C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E15A98-F294-4917-9659-DAEBF3EA9C16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7BA7C81-7D16-48B5-9A15-0F82755FE9FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BA7C81-7D16-48B5-9A15-0F82755FE9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BA7C81-7D16-48B5-9A15-0F82755FE9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BA7C81-7D16-48B5-9A15-0F82755FE9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDE15F98-858C-45C4-B039-2623CA5F8208}
+	EndGlobalSection
+EndGlobal
