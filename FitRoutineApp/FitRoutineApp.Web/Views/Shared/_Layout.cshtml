@@ -3,29 +3,99 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FitRoutineApp.Web</title>
+    <title>@ViewData["Title"] - FitRoutine</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FitRoutineApp.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FitRoutine.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    @await RenderSectionAsync("Estilos", required: false)
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-light bg-info">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FitRoutineApp.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand text-light" href="#">FitRoutine</a>
+                <button class="navbar-toggler text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <div class="offcanvas offcanvas-end bg-info" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel">FitRoutine</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" asp-controller="Home" asp-action="Index">
+                                    <span class="oi oi-home"></span> Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" asp-controller="Usuarios" asp-action="Lista">
+                                    <span class="oi oi-people"></span> Usuarios
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" asp-controller="Historial" asp-action="Index">
+                                    <span class="oi oi-book"></span> Historial de Actividades
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" asp-controller="Sesiones" asp-action="Index">
+                                    <span class="oi oi-calendar"></span> Sesion
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" asp-controller="Ingresos" asp-action="Index">
+                                    <span class="oi oi-dollar"></span> Ingresos
+                                </a>
+                            </li>
+
+                            @if (User.Identity!.IsAuthenticated && User.IsInRole("Administrador"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-light" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Menú
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                        <li><a class="dropdown-item text-light" asp-controller="Usuarios" asp-action="Index">Usuarios</a></li>
+                                        <li><a class="dropdown-item text-light" asp-controller="Actividades" asp-action="Index">Actividades</a></li>
+                                        <li><a class="dropdown-item text-light" asp-controller="Categorias" asp-action="Index">Categorías</a></li>
+                                        <li><a class="dropdown-item text-light" asp-controller="Ingresos" asp-action="Index">Ingresos</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Usuario"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Actividades" asp-action="Index">Actividades</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                                </li>
+                            }
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Entrenador"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Actividades" asp-action="Index">Actividades</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">Categorías</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Sesion" asp-action="Index">Sesiones</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Edit"><strong>Hola! @User.Identity.Name</strong></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="CerrarSesion">Salir</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -38,7 +108,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - FitRoutineApp.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - FitRoutine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

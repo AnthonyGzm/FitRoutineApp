@@ -1,0 +1,90 @@
+﻿@model IEnumerable<FitRoutineApp.Web.Models.Sesion>
+
+@{
+    ViewData["Title"] = "Sesiones";
+}
+
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                title: '¡Éxito!',
+                text: '@TempData["AlertMessage"]',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
+        });
+    </script>
+}
+
+<p>
+    <a onclick="showInPopup('@Url.Action("Create", "Sesiones", new { id = 0 }, Context.Request.Scheme)' , '')" class="btn btn-sm btn-primary text-white">
+        <i class="oi oi-plus"></i> Agregar una sesión
+    </a>
+</p>
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header text-center">
+            <h5>Lista de Sesiones</h5>
+        </div>
+        <div class="card-body">
+            <table id="evento" class="table table-hover table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>@item.FechaSesion.ToString("yyyy-MM-dd")</td>
+                            <td>@item.HoraSesion.ToString("HH:mm")</td>
+                            <td>
+                                <a onclick="showInPopup('@Url.Action("Edit", "Sesiones", new { id = item.Id }, Context.Request.Scheme)' , '')" class="btn btn-outline-warning btn-sm">
+                                    <i class="oi oi-pencil"></i> Editar
+                                </a>
+                                <button data-id="@item.Id" class="btn btn-outline-danger btn-sm deleteItem" data-bs-toggle="modal" data-bs-target="#deleteDialog">
+                                    <i class="oi oi-trash"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<partial name="_MostrarModal" />
+<partial name="_ModalEliminar" />
+
+@section Scripts {
+    <script src="~/js/showmodal.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#evento').DataTable({
+                "language": {
+                    url: "https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json"
+                }
+            });
+        });
+    </script>
+
+    <script>
+        sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Sesiones/Delete/', false);
+    </script>
+}

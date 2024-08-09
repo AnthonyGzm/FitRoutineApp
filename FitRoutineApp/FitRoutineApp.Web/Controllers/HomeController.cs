@@ -1,8 +1,10 @@
 using FitRoutineApp.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using Newtonsoft.Json;
 
-namespace FitRoutineApp.Web.Controllers
+namespace FitRoutineApp.Controllers
 {
     public class HomeController : Controller
     {

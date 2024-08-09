@@ -1,0 +1,115 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "Registro";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<html>
+<head>
+    <style>
+        body {
+            background-image: url('/images/background2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+</head>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col-md-6">
+                <div class="card bg-success">
+                    <div class="card-header d-flex justify-content-center">
+                        <img src="/images/uma.png" style="width: 150px; height: auto;" />
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Login" asp-action="Registro" method="post">
+                            <input class="form-control mb-3" type="text" placeholder="Nombre" asp-for="Nombre" required />
+                            <input class="form-control mb-3" type="text" placeholder="Apellido" asp-for="Apellidos" required />
+                            <select class="form-control mb-3" asp-for="Genero" required>
+                                <option value="" disabled selected>Selecciona un género</option>
+                                <option value="Hombre">Hombre</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="No Binario">No Binario</option>
+                            </select>
+                            <input class="form-control mb-3" type="text" placeholder="Dirección" asp-for="Direccion" required />
+                            <input class="form-control mb-3" type="text" placeholder="Teléfono" asp-for="Telefono" required />
+                            <input class="form-control mb-3" type="email" placeholder="Email" asp-for="Email" required />
+                            <input class="form-control mb-3" type="text" placeholder="Nombre de Usuario" asp-for="NombreUsuario" required />
+                            <input class="form-control mb-3" type="password" placeholder="Contraseña" asp-for="Contraseña" required />
+                            <input class="form-control mb-3" type="text" placeholder="Fecha de Nacimiento" asp-for="FechaNacimiento" id="datepicker" required />
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">Registrarse</button>
+                            </div>
+                            @if (ViewData["Mensaje"] != null)
+                            {
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Mensaje"]
+                                    </div>
+                                </div>
+                            }
+                            ¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion", "Login")" class="text-info">Iniciar Sesión</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1900:2024"
+            });
+        });
+    </script>
+</body>
+</html>
+
+@if (ViewData["AlertMessage"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            Swal.fire({
+                title: 'Error',
+                text: '@ViewData["AlertMessage"]',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+}
+
+@if (ViewData["Message"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            Swal.fire({
+                title: 'Éxito',
+                text: '@ViewData["Message"]',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+}
