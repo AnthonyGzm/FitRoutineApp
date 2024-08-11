@@ -1,5 +1,5 @@
-﻿
-<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" data-bs-backdrop="static" aria-labelledby="deleteDialogLabel" aria-hidden="true">
+﻿@* _ModalEliminar.cshtml *@
+<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="deleteDialogLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
@@ -10,12 +10,8 @@
                 <p>¿Estás seguro de que deseas eliminar este registro?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    <i class="fa fa-ban"></i> No
-                </button>
-                <button type="button" class="btn btn-danger" id="btnYesDelete">
-                    <i class="fa fa-check-circle"></i> Sí
-                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-ban"></i> No</button>
+                <button type="button" class="btn btn-danger" id="btnYesDelete"><i class="fa fa-check-circle"></i> Sí</button>
             </div>
         </div>
     </div>

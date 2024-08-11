@@ -1,0 +1,60 @@
+﻿@model FitRoutineApp.Web.Models.SesionViewModel
+
+@{
+    ViewData["Title"] = "Crear Sesión";
+    Layout = null;
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header text-center">
+            <h5>Crear Sesión</h5>
+        </div>
+        <div class="card-body text-center">
+            <form asp-action="Crear" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Fecha -->
+                <div class="form-group">
+                    <label for="Fecha">Fecha</label>
+                    <input asp-for="Fecha" class="form-control" type="date" />
+                    <span asp-validation-for="Fecha" class="text-danger"></span>
+                </div>
+
+                <!-- Cliente -->
+                <div class="form-group">
+                    <label for="ClienteId">Cliente</label>
+                    <select asp-for="ClienteId" asp-items="Model.Clientes" class="form-control">
+                        <!-- La opción de selección ya está incluida en el SelectList del controlador, así que no necesitas agregarla aquí. -->
+                    </select>
+                    <span asp-validation-for="ClienteId" class="text-danger"></span>
+                </div>
+
+                <!-- Entrenador -->
+                <div class="form-group">
+                    <label for="EntrenadorId">Entrenador</label>
+                    <select asp-for="EntrenadorId" asp-items="Model.Entrenadores" class="form-control">
+                        <!-- La opción de selección ya está incluida en el SelectList del controlador, así que no necesitas agregarla aquí. -->
+                    </select>
+                    <span asp-validation-for="EntrenadorId" class="text-danger"></span>
+                </div>
+
+                <!-- Actividad -->
+                <div class="form-group">
+                    <label for="ActividadId">Actividad</label>
+                    <select asp-for="ActividadId" asp-items="Model.Actividades" class="form-control">
+                        <!-- La opción de selección ya está incluida en el SelectList del controlador, así que no necesitas agregarla aquí. -->
+                    </select>
+                    <span asp-validation-for="ActividadId" class="text-danger"></span>
+                </div>
+
+                <div class="card-footer">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-save"></i> Guardar</button>
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

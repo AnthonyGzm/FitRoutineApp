@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FitRoutineApp.Web.Models
 {
-    public class Entrenador
+    public class EntrenadorViewModel
     {
         public int Id { get; set; }
 
@@ -27,10 +28,7 @@ namespace FitRoutineApp.Web.Models
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int EspecialidadId { get; set; }
 
-        [ForeignKey(nameof(EspecialidadId))]
-        public Actividad Especialidad { get; set; }
-
-        [NotMapped]
+        // Lista de actividades para el dropdown
         public IEnumerable<SelectListItem> Actividades { get; set; }
     }
 }

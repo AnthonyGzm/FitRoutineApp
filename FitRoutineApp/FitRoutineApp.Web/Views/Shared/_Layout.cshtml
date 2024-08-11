@@ -1,116 +1,226 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - FitRoutine</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FitRoutine.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-    @await RenderSectionAsync("Estilos", required: false)
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    @RenderSection("Estilos", required: false)
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #343a40;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            padding: 0.75rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: #fff !important;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+        }
+
+            .nav-link:hover {
+                color: #ffeb3b !important;
+            }
+
+        .hero {
+            background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.7)), url('/images/hero-bg-gym.jpg') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+
+            .hero h1 {
+                font-size: 3.5rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+                margin-bottom: 2rem;
+            }
+
+        .cta-button {
+            background-color: #ffeb3b;
+            color: #343a40;
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+            .cta-button:hover {
+                background-color: #ffc107;
+                color: #343a40;
+            }
+
+        .features {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .feature-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-10px);
+            }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 2rem 0;
+        }
+
+            .footer a {
+                color: #ffc107;
+            }
+
+                .footer a:hover {
+                    color: #ffeb3b;
+                }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-light bg-info">
-            <div class="container-fluid">
-                <a class="navbar-brand text-light" href="#">FitRoutine</a>
-                <button class="navbar-toggler text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FitRoutine</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end bg-info" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel">FitRoutine</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Clientes" asp-action="Lista">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Actividad" asp-action="Lista">Actividades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Entrenadores" asp-action="Lista">Entrenadores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Sesiones" asp-action="Lista">Sesiones</a>
+                        </li>
+                        @*  @if (User.Identity!.IsAuthenticated)
+                        {
                             <li class="nav-item">
-                                <a class="nav-link active text-light" asp-controller="Home" asp-action="Index">
-                                    <span class="oi oi-home"></span> Inicio
+                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Edit">
+                                    <i class="fas fa-user"></i> @User.Identity.Name
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" asp-controller="Usuarios" asp-action="Lista">
-                                    <span class="oi oi-people"></span> Usuarios
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" asp-controller="Historial" asp-action="Index">
-                                    <span class="oi oi-book"></span> Historial de Actividades
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" asp-controller="Sesiones" asp-action="Index">
-                                    <span class="oi oi-calendar"></span> Sesion
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active text-light" asp-controller="Ingresos" asp-action="Index">
-                                    <span class="oi oi-dollar"></span> Ingresos
-                                </a>
-                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Login" asp-action="CerrarSesion">Salir</a>
+                            </li> 
+                        }
+                        else
+                        {
+                             <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Index">Iniciar Sesión</a>
+                        </li>
+                        } *@
 
-                            @if (User.Identity!.IsAuthenticated && User.IsInRole("Administrador"))
-                            {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-light" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Menú
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                        <li><a class="dropdown-item text-light" asp-controller="Usuarios" asp-action="Index">Usuarios</a></li>
-                                        <li><a class="dropdown-item text-light" asp-controller="Actividades" asp-action="Index">Actividades</a></li>
-                                        <li><a class="dropdown-item text-light" asp-controller="Categorias" asp-action="Index">Categorías</a></li>
-                                        <li><a class="dropdown-item text-light" asp-controller="Ingresos" asp-action="Index">Ingresos</a></li>
-                                    </ul>
-                                </li>
-                            }
-                            @if (User.Identity.IsAuthenticated && User.IsInRole("Usuario"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Actividades" asp-action="Index">Actividades</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
-                                </li>
-                            }
-                            @if (User.Identity.IsAuthenticated && User.IsInRole("Entrenador"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Actividades" asp-action="Index">Actividades</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Categorias" asp-action="Index">Categorías</a>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Sesion" asp-action="Index">Sesiones</a>
-                                </li>
-                            }
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Edit"><strong>Hola! @User.Identity.Name</strong></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="CerrarSesion">Salir</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    @if (Context.Request.Path == "/" && Context.Request.RouteValues["controller"] as string == "Home" && Context.Request.RouteValues["action"] as string == "Index")
+    {
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Transforma tu vida</h1>
+                <p>Comienza hoy tu camino hacia una vida más saludable con FitRoutine.</p>
+                <a href="#" class="cta-button">Únete Ahora</a>
+            </div>
+        </div>
+
+        <section class="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="fas fa-dumbbell feature-icon"></i>
+                            <h3>Entrenamientos Personalizados</h3>
+                            <p>Programas diseñados específicamente para ti.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="fas fa-heartbeat feature-icon"></i>
+                            <h3>Seguimiento de Progreso</h3>
+                            <p>Monitorea cada paso hacia tu meta.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <i class="fas fa-users feature-icon"></i>
+                            <h3>Comunidad Activa</h3>
+                            <p>Únete a una comunidad de apoyo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - FitRoutine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2024 - FitRoutine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a></p>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

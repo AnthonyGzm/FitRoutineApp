@@ -1,4 +1,5 @@
-using FitRoutineApp.Web.Models; // Asegúrate de que tus modelos estén en este espacio de nombres
+using FitRoutineApp.Web.Models; 
+using FitRoutineApp.Web.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,17 +15,11 @@ namespace FitRoutineApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<DataContext>(options =>
+            builder.Services.AddDbContext<FitRoutineContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSQL")));
 
-            // Configuración de autenticación
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
-                {
-                    options.LoginPath = "/Login/IniciarSesion";
-                    options.LogoutPath = "/Login/Logout";
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                });
+            builder.Services.AddScoped<IServicioUsuario, ServicioUsuario>();
+            builder.Services.AddScoped<IServicioLista, ServicioLista>();
 
             var app = builder.Build();
 
