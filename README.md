@@ -19,9 +19,7 @@ Whether you're an individual looking to organize your workouts or an admin manag
 ## 📸 Screenshots
 
 Here are some screenshots of the FitRoutine application:
-
-![Image](https://github.com/user-attachments/assets/2bd5c1dd-5cd3-4578-b46f-3b79fe55c43b)
-![Image](https://github.com/user-attachments/assets/7f43bcb5-aeb6-4129-b1d2-b4462b739479)
+![Home Page](https://github.com/AnthonyGzm/FitRoutineApp/blob/02b180d286ee09d9cc79a4c36ba87eb69edbeedc/FitRoutine%20HomePage.jpg)
 
 
 ## 💻 Installation
