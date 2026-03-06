@@ -75,7 +75,7 @@ FitRoutine is open-source software licensed under the [MIT License](LICENSE).
 
 ## 🧩 By
 
-Developed by Anthony Guzman.
+Developed by Anthony Guzman and Cristian Pimentel
 
 
 
